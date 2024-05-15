@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div
+        class="flex py-3 my-4 px-5 justify-between w-[80%] mx-auto shadow-md rounded-md">
+        <div class="flex gap-4">
+          <div class="flex gap-4">
+            <div class="flex flex-column gap-1">
+              <h4 class="font-medium text-lg">BOM</h4>
+              <p class="text-sm">Mumbai</p>
+            </div>
+            <div class="flex flex-row align-items-center justiy-center">
+              <i class="text-lg fas fa-arrow-right"></i>
+            </div>
+            <div class="flex flex-column gap-1">
+              <h4 class="font-medium text-lg">DEL</h4>
+              <p class="text-sm">New Delhi</p>
+            </div>
+          </div>
+          <div class="h-100 w-[1px] bg-gray-400"></div>
+          <div class="flex flex-column gap-1">
+            <p class="text-sm">Departure</p>
+            <p class="text-sm">
+              <span class="font-semibold text-xl">16</span> May’24, Thursday
+            </p>
+          </div>
+          <div class="h-100 w-[1px] bg-gray-400"></div>
+          <div class="flex flex-column gap-1">
+            <p class="text-sm">Travellers</p>
+            <p class="font-semibold text-xl">01</p>
+          </div>
+          <div class="h-100 w-[1px] bg-gray-400"></div>
+          <div class="flex flex-column gap-1">
+            <p class="text-sm">Travel Class</p>
+            <p class="text-normal">Economy</p>
+          </div>
+        </div>
+        <div
+          class="flex justify-center item-center border-1 border-solid border-[#07162d] text-black font-semibold rounded-md px-4">
+          <button class="text-sm">Modify Search</button>
+        </div>
+      </div>
+      <div class="flex py-3 my-4 justify-between w-[80%] mx-auto">
+        <div class="flex flex-column gap-4 rounded-sm border-1 py-3 px-4">
+          <div class="flex flex-col gap-3">
+            <h4 class="text-uppercase font-semibold text-sm tracking-normal">
+              Stops
+            </h4>
+            <div class="flex flex-row gap-7">
+              <div class="flex flex-column gap-2 align-items-center">
+                <a
+                  href=""
+                  class="border-1 border-gray-300 flex justify-content-center align-items-center rounded-md py-1 px-3">
+                  <div class="">0</div>
+                </a>
+                <span class="text-xs">₹ 7591</span>
+              </div>
+              <div class="flex flex-column gap-2 align-items-center">
+                <a
+                  href=""
+                  class="border-1 border-gray-300 flex justify-content-center align-items-center rounded-md py-1 px-3">
+                  <div class="">1</div>
+                </a>
+                <span class="text-xs">₹ 7591</span>
+              </div>
+              <div class="flex flex-column gap-2 align-items-center">
+                <a
+                  href=""
+                  class="border-1 border-gray-300 flex justify-content-center align-items-center rounded-md py-1 px-3">
+                  <div class="">1+</div>
+                </a>
+                <span class="text-xs">₹ 7591</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-100 bg-gray-200 h-[1px]"></div>
+          <div class="flex flex-col gap-3">
+            <h5 class="text-uppercase font-semibold text-sm tracking-normal">
+              FARE TYPE
+            </h5>
+            <div class="flex flex-row gap-3">
+              <div
+                class="text-[12px] flex flex-row align-item-center gap-2 font-medium">
+                <input type="checkbox" name="non-refundable" id="" />
+                Non-Refundable
+              </div>
+              <div
+                class="text-[12px] flex flex-row align-item-center gap-2 font-medium">
+                <input type="checkbox" name="refundable" id="" />
+                Refundable
+              </div>
+            </div>
+          </div>
+          <div class="w-100 bg-gray-200 h-[1px]"></div>
+          <div class="flex flex-col gap-3">
+            <div>
+              <h5 class="text-uppercase font-semibold text-sm tracking-normal">
+                DEPARTURE TIMES
+              </h5>
+              <span class="text-xs text-gray-500 font-medium">From Mumbai</span>
+            </div>
+            <div class="flex flex-row gap-3">
+              <div
+                class="flex flex-col gap-1 align-items-center border-1 rounded-md border-solid border-gray-300 px-2 py-1">
+                <a href="">
+                  <img
+                    width="20"
+                    height="20"
+                    src="https://img.icons8.com/cotton/64/sunrise--v2.png"
+                    alt="sunrise--v2" />
+                </a>
+                <span class="text-xs">05-12</span>
+              </div>
+              <div
+                class="flex flex-col gap-1 align-items-center border-1 rounded-md border-solid border-gray-300 px-2 py-1">
+                <a href="">
+                  <img
+                    width="20"
+                    height="20"
+                    src="https://img.icons8.com/ios/50/sun--v1.png"
+                    alt="sun--v1" />
+                </a>
+                <span class="text-xs">12-18</span>
+              </div>
+              <div
+                class="flex flex-col gap-1 align-items-center border-1 rounded-md border-solid border-gray-300 px-2 py-1">
+                <a href="">
+                  <img
+                    width="20"
+                    height="20"
+                    src="https://img.icons8.com/pastel-glyph/64/sunset--v2.png"
+                    alt="sunset--v2" />
+                </a>
+                <span class="text-xs">18-23</span>
+              </div>
+              <div
+                class="flex flex-col gap-1 align-items-center border-1 rounded-md border-solid border-gray-300 px-2 py-1">
+                <a href="">
+                  <img
+                    width="20"
+                    height="20"
+                    src="https://img.icons8.com/ios/50/crescent-moon.png"
+                    alt="crescent-moon" />
+                </a>
+                <span class="text-xs">23-05</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-100 bg-gray-200 h-[1px]"></div>
+          <div class="flex flex-col gap-3">
+            <div>
+              <h5 class="text-uppercase font-semibold text-sm tracking-normal">
+                ARRIVAL TIMES
+              </h5>
+              <span class="text-xs text-gray-500 font-medium"
+                >At New Delhi</span
+              >
+            </div>
+            <div class="flex flex-row gap-3">
+              <div
+                class="flex flex-col gap-1 align-items-center border-1 rounded-md border-solid border-gray-300 px-2 py-1">
+                <a href="">
+                  <img
+                    width="20"
+                    height="20"
+                    src="https://img.icons8.com/cotton/64/sunrise--v2.png"
+                    alt="sunrise--v2" />
+                </a>
+                <span class="text-xs">05-12</span>
+              </div>
+              <div
+                class="flex flex-col gap-1 align-items-center border-1 rounded-md border-solid border-gray-300 px-2 py-1">
+                <a href="">
+                  <img
+                    width="20"
+                    height="20"
+                    src="https://img.icons8.com/ios/50/sun--v1.png"
+                    alt="sun--v1" />
+                </a>
+                <span class="text-xs">12-18</span>
+              </div>
+              <div
+                class="flex flex-col gap-1 align-items-center border-1 rounded-md border-solid border-gray-300 px-2 py-1">
+                <a href="">
+                  <img
+                    width="20"
+                    height="20"
+                    src="https://img.icons8.com/pastel-glyph/64/sunset--v2.png"
+                    alt="sunset--v2" />
+                </a>
+                <span class="text-xs">18-23</span>
+              </div>
+              <div
+                class="flex flex-col gap-1 align-items-center border-1 rounded-md border-solid border-gray-300 px-2 py-1">
+                <a href="">
+                  <img
+                    width="20"
+                    height="20"
+                    src="https://img.icons8.com/ios/50/crescent-moon.png"
+                    alt="crescent-moon" />
+                </a>
+                <span class="text-xs">23-05</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-100 bg-gray-200 h-[1px]"></div>
+          <div class="flex flex-col gap-3">
+            <div>
+              <h5 class="text-uppercase font-semibold text-sm tracking-normal">
+                Airlines
+              </h5>
+            </div>
+            <div class="flex flex-column gap-3">
+              <div class="flex flex-row align-items-center gap-2">
+                <input type="checkbox" id="flexCheckDefaults1" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults1">
+                  <span class="flex flex-row justify-content-between w-100">
+                    <span class="text-xs">Air India (38)</span>
+                    <span class="text-xs">₹ 7591</span>
+                  </span>
+                </label>
+              </div>
+              <div class="flex flex-row align-items-center gap-2">
+                <input type="checkbox" id="flexCheckDefaults1" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults1">
+                  <span class="flex flex-row justify-content-between w-100">
+                    <span class="text-xs">Air India Express (18)</span>
+                    <span class="text-xs">₹ 7591</span>
+                  </span>
+                </label>
+              </div>
+              <div class="flex flex-row align-items-center gap-2">
+                <input type="checkbox" id="flexCheckDefaults1" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults1">
+                  <span class="flex flex-row justify-content-between w-100">
+                    <span class="text-xs">Akasa Air (3)</span>
+                    <span class="text-xs">₹ 7591</span>
+                  </span>
+                </label>
+              </div>
+              <div class="flex flex-row align-items-center gap-2">
+                <input type="checkbox" id="flexCheckDefaults1" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults1">
+                  <span class="flex flex-row justify-content-between w-100">
+                    <span class="text-xs">IndiGo (56)</span>
+                    <span class="text-xs">₹ 7591</span>
+                  </span>
+                </label>
+              </div>
+              <div class="flex flex-row align-items-center gap-2">
+                <input type="checkbox" id="flexCheckDefaults1" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults1">
+                  <span class="flex flex-row justify-content-between w-100">
+                    <span class="text-xs">SpiceJet (9)</span>
+                    <span class="text-xs">₹ 7591</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="w-100 bg-gray-200 h-[1px]"></div>
+          <div class="flex flex-column gap-3">
+            <div class="left_side_search_heading">
+              <h5 class="text-uppercase font-semibold text-sm tracking-normal">
+                PRICE RANGE
+              </h5>
+              <div class="my-2 flex flex-column gap-3">
+                <div class="flex flex-column gap-2">
+                  <span class="text-xs">Min</span>
+                  <input
+                    type="number"
+                    class="border-1 text-sm text-center outline-0 border-gray-300 ml-0 py-2"
+                    value="2500" />
+                </div>
+                <div class="flex flex-column gap-2">
+                  <span class="text-xs">Max</span>
+                  <input
+                    type="number"
+                    class="border-1 text-sm text-center outline-0 border-gray-300 ml-0 py-2"
+                    value="7500" />
+                </div>
+                <div
+                  class="flex cursor-pointer justify-center item-center border-1 border-solid border-slate-400 font-semibold rounded-md py-1 px-3">
+                  <button class="text-sm">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-100 bg-gray-200 h-[1px]"></div>
+          <div class="flex flex-column gap-3">
+            <div>
+              <h5 class="text-uppercase font-semibold text-sm tracking-normal">
+                Connecting Airports
+              </h5>
+            </div>
+            <div class="flex flex-column gap-3">
+              <div class="flex flex-row align-items-center gap-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefaults1" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults1">
+                  <span class="text-xs">Ahmedabad</span>
+                </label>
+              </div>
+              <div class="flex flex-row align-items-center gap-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefaults2" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults2">
+                  <span class="text-xs">Aurangabad</span>
+                </label>
+              </div>
+              <div class="flex flex-row align-items-center gap-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefaults3" />
+                <label
+                  class="flex flex-row w-100 align-items-center"
+                  for="flexCheckDefaults3">
+                  <span class="text-xs">Bangalore</span>
+                </label>
+              </div>
+              <div class="flex flex-row align-items-center gap-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefaults4" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults4">
+                  <span class="text-xs">Bhopal</span>
+                </label>
+              </div>
+              <div class="flex flex-row align-items-center gap-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefaults5" />
+                <label class="flex flex-row w-100" for="flexCheckDefaults5">
+                  <span class="text-xs">Bhubaneswar</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-column gap-10">
+          <div class="flex gap-2">
+            <a href="" class="bg-[#dcdde1] rounded-sm shadow-sm py-2 px-3">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <p class="text-xs">Friday,15 Mar</p>
+                <p class="text-sm">&#8377;5053</p>
+              </div>
+            </a>
+            <a href="" class="bg-[#dcdde1] rounded-sm shadow-sm py-2 px-3">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <p class="text-xs">Friday,15 Mar</p>
+                <p class="text-sm">&#8377;5053</p>
+              </div>
+            </a>
+            <a href="" class="bg-[#dcdde1] rounded-sm shadow-sm py-2 px-3">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <p class="text-xs">Friday,15 Mar</p>
+                <p class="text-sm">&#8377;5053</p>
+              </div>
+            </a>
+            <a href="" class="bg-[#dcdde1] rounded-sm shadow-sm py-2 px-3">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <p class="text-xs">Friday,15 Mar</p>
+                <p class="text-sm">&#8377;5053</p>
+              </div>
+            </a>
+            <a href="" class="bg-[#dcdde1] rounded-sm shadow-sm py-2 px-3">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <p class="text-xs">Friday,15 Mar</p>
+                <p class="text-sm">&#8377;5053</p>
+              </div>
+            </a>
+            <a href="" class="bg-[#dcdde1] rounded-sm shadow-sm py-2 px-3">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <p class="text-xs">Friday,15 Mar</p>
+                <p class="text-sm">&#8377;5053</p>
+              </div>
+            </a>
+            <a href="" class="bg-[#dcdde1] rounded-sm shadow-sm py-2 px-3">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <p class="text-xs">Friday,15 Mar</p>
+                <p class="text-sm">&#8377;5053</p>
+              </div>
+            </a>
+            <a href="" class="bg-[#dcdde1] rounded-sm shadow-sm py-2 px-3">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <p class="text-xs">Friday,15 Mar</p>
+                <p class="text-sm">&#8377;5053</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- book now box 1 -->
+
+          <div
+            class="flex justify-content-between align-items-center py-4 px-4"
+            style="box-shadow: 0px 0px 7px 6px #f1f1f1">
+            <div class="flex flex-row gap-2">
+              <img
+                src="AI.jpg"
+                alt=""
+                width="30px"
+                height="20px"
+                class="object-fit-contain" />
+              <div>
+                <p class="text-sm font-semibold">Air India</p>
+                <span class="text-xs text-gray-500">AI - 1442</span>
+              </div>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center">
+              <h4 class="font-bold text-2xl">17:25</h4>
+              <p class="text-xs text-gray-500">Mumbai</p>
+            </div>
+            <div
+              class="flex flex-column gap-2 align-items-center justify-content-center">
+              <p class="font-semibold text-xs text-gray-500">8 Hr. 50 Min.</p>
+              <div
+                class="flex w-[100%] align-items-center justify-content-center">
+                <div
+                  class="inline-block w-25 border-dashed border-gray-300 border-1"></div>
+                <div class="h-[6px] w-[6px] rounded-full bg-[red]"></div>
+                <div
+                  class="inline-block w-25 border-dashed border-gray-300 border-1"></div>
+                <i class="fa fa-plane"></i>
+              </div>
+              <p class="font-semibold text-xs text-gray-500">
+                1 stop , Via Jaipur
+              </p>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center">
+              <h4 class="font-bold text-2xl">7:25</h4>
+              <p class="text-xs text-gray-500">New Delhi</p>
+              <span class="text-red-500 text-xs">Next Day</span>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center gap-2">
+              <img
+                width="25"
+                height="25"
+                src="https://img.icons8.com/ios/50/baby-car-seat.png"
+                alt="baby-car-seat" />
+              <p class="text-xs text-red-500 font-semibold">9 Left</p>
+            </div>
+            <div class="flex gap-5">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <h4 class="text-2xl font-bold">&#8377; 5011</h4>
+                <span class="text-xs text-orange-500 font-semibold"
+                  >ATFLY - 43 off</span
+                >
+              </div>
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <button
+                  class="text-white px-3 py-2 bg-[#d32f2f] font-semibold border-1 border-solid border-[#bf3535] rounded-md">
+                  Book Now
+                </button>
+                <p class="text-xs text-blue-400 font-semibold">
+                  + Flight Details
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- book now box 2 -->
+
+          <div
+            class="flex justify-content-between align-items-center py-4 px-4"
+            style="box-shadow: 0px 0px 7px 6px #f1f1f1">
+            <div class="flex flex-row gap-2">
+              <img
+                src="AI.jpg"
+                alt=""
+                width="30px"
+                height="20px"
+                class="object-fit-contain" />
+              <div>
+                <p class="text-sm font-semibold">Air India</p>
+                <span class="text-xs text-gray-500">AI - 1442</span>
+              </div>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center">
+              <h4 class="font-bold text-2xl">17:25</h4>
+              <p class="text-xs text-gray-500">Mumbai</p>
+            </div>
+            <div
+              class="flex flex-column gap-2 align-items-center justify-content-center">
+              <p class="font-semibold text-xs text-gray-500">8 Hr. 50 Min.</p>
+              <div
+                class="flex w-[100%] align-items-center justify-content-center">
+                <div
+                  class="inline-block w-25 border-dashed border-gray-300 border-1"></div>
+                <div class="h-[6px] w-[6px] rounded-full bg-[red]"></div>
+                <div
+                  class="inline-block w-25 border-dashed border-gray-300 border-1"></div>
+                <i class="fa fa-plane"></i>
+              </div>
+              <p class="font-semibold text-xs text-gray-500">
+                1 stop , Via Jaipur
+              </p>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center">
+              <h4 class="font-bold text-2xl">7:25</h4>
+              <p class="text-xs text-gray-500">New Delhi</p>
+              <span class="text-red-500 text-xs">Next Day</span>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center gap-2">
+              <img
+                width="25"
+                height="25"
+                src="https://img.icons8.com/ios/50/baby-car-seat.png"
+                alt="baby-car-seat" />
+              <p class="text-xs text-red-500 font-semibold">9 Left</p>
+            </div>
+            <div class="flex gap-5">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <h4 class="text-2xl font-bold">&#8377; 5011</h4>
+                <span class="text-xs text-orange-500 font-semibold"
+                  >ATFLY - 43 off</span
+                >
+              </div>
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <button
+                  class="text-white px-3 py-2 bg-[#d32f2f] font-semibold border-1 border-solid border-[#bf3535] rounded-md">
+                  Book Now
+                </button>
+                <p class="text-xs text-blue-400 font-semibold">
+                  + Flight Details
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- book now box 3 -->
+
+          <div
+            class="flex justify-content-between align-items-center py-4 px-4"
+            style="box-shadow: 0px 0px 7px 6px #f1f1f1">
+            <div class="flex flex-row gap-2">
+              <img
+                src="AI.jpg"
+                alt=""
+                width="30px"
+                height="20px"
+                class="object-fit-contain" />
+              <div>
+                <p class="text-sm font-semibold">Air India</p>
+                <span class="text-xs text-gray-500">AI - 1442</span>
+              </div>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center">
+              <h4 class="font-bold text-2xl">17:25</h4>
+              <p class="text-xs text-gray-500">Mumbai</p>
+            </div>
+            <div
+              class="flex flex-column gap-2 align-items-center justify-content-center">
+              <p class="font-semibold text-xs text-gray-500">8 Hr. 50 Min.</p>
+              <div
+                class="flex w-[100%] align-items-center justify-content-center">
+                <div
+                  class="inline-block w-25 border-dashed border-gray-300 border-1"></div>
+                <div class="h-[6px] w-[6px] rounded-full bg-[red]"></div>
+                <div
+                  class="inline-block w-25 border-dashed border-gray-300 border-1"></div>
+                <i class="fa fa-plane"></i>
+              </div>
+              <p class="font-semibold text-xs text-gray-500">
+                1 stop , Via Jaipur
+              </p>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center">
+              <h4 class="font-bold text-2xl">7:25</h4>
+              <p class="text-xs text-gray-500">New Delhi</p>
+              <span class="text-red-500 text-xs">Next Day</span>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center gap-2">
+              <img
+                width="25"
+                height="25"
+                src="https://img.icons8.com/ios/50/baby-car-seat.png"
+                alt="baby-car-seat" />
+              <p class="text-xs text-red-500 font-semibold">9 Left</p>
+            </div>
+            <div class="flex gap-5">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <h4 class="text-2xl font-bold">&#8377; 5011</h4>
+                <span class="text-xs text-orange-500 font-semibold"
+                  >ATFLY - 43 off</span
+                >
+              </div>
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <button
+                  class="text-white px-3 py-2 bg-[#d32f2f] font-semibold border-1 border-solid border-[#bf3535] rounded-md">
+                  Book Now
+                </button>
+                <p class="text-xs text-blue-400 font-semibold">
+                  + Flight Details
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- book now box 4 -->
+
+          <div
+            class="flex justify-content-between align-items-center py-4 px-4"
+            style="box-shadow: 0px 0px 7px 6px #f1f1f1">
+            <div class="flex flex-row gap-2">
+              <img
+                src="AI.jpg"
+                alt=""
+                width="30px"
+                height="20px"
+                class="object-fit-contain" />
+              <div>
+                <p class="text-sm font-semibold">Air India</p>
+                <span class="text-xs text-gray-500">AI - 1442</span>
+              </div>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center">
+              <h4 class="font-bold text-2xl">17:25</h4>
+              <p class="text-xs text-gray-500">Mumbai</p>
+            </div>
+            <div
+              class="flex flex-column gap-2 align-items-center justify-content-center">
+              <p class="font-semibold text-xs text-gray-500">8 Hr. 50 Min.</p>
+              <div
+                class="flex w-[100%] align-items-center justify-content-center">
+                <div
+                  class="inline-block w-25 border-dashed border-gray-300 border-1"></div>
+                <div class="h-[6px] w-[6px] rounded-full bg-[red]"></div>
+                <div
+                  class="inline-block w-25 border-dashed border-gray-300 border-1"></div>
+                <i class="fa fa-plane"></i>
+              </div>
+              <p class="font-semibold text-xs text-gray-500">
+                1 stop , Via Jaipur
+              </p>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center">
+              <h4 class="font-bold text-2xl">7:25</h4>
+              <p class="text-xs text-gray-500">New Delhi</p>
+              <span class="text-red-500 text-xs">Next Day</span>
+            </div>
+            <div
+              class="flex flex-column justify-content-center align-items-center gap-2">
+              <img
+                width="25"
+                height="25"
+                src="https://img.icons8.com/ios/50/baby-car-seat.png"
+                alt="baby-car-seat" />
+              <p class="text-xs text-red-500 font-semibold">9 Left</p>
+            </div>
+            <div class="flex gap-5">
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <h4 class="text-2xl font-bold">&#8377; 5011</h4>
+                <span class="text-xs text-orange-500 font-semibold"
+                  >ATFLY - 43 off</span
+                >
+              </div>
+              <div
+                class="flex flex-column gap-2 justify-content-center align-items-center">
+                <button
+                  class="text-white px-3 py-2 bg-[#d32f2f] font-semibold border-1 border-solid border-[#bf3535] rounded-md">
+                  Book Now
+                </button>
+                <p class="text-xs text-blue-400 font-semibold">
+                  + Flight Details
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/f50fdb34c0.js"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
