@@ -12,7 +12,12 @@
 }
 
 nav {
+  padding-bottom: 20px;
   background-color: #07162d;
+  background-image: url(./banner.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #nav-search-container {
@@ -52,9 +57,11 @@ nav {
 }
 
 #extraordinarybtn {
-  background-image: linear-gradient(to right, #d32f2f, #7f0101) !important;
+  background-color: #f29e3e !important;
+  color: black !important;
+  /* background-image: linear-gradient(to right, #d32f2f, #7f0101) !important; */
   border: 1px solid #bf3535 !important;
-  border-radius: 0px !important;
+  border-radius: 4px !important;
 }
 
 #overflow-search-btn {
