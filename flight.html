@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Akbar Travel - Flight Search</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <div id="wrapper">
@@ -491,9 +491,234 @@
                   class="text-white px-3 py-2 bg-[#d32f2f] font-semibold border-1 border-solid border-[#bf3535] rounded-md">
                   Book Now
                 </button>
-                <p class="text-xs text-blue-400 font-semibold">
+                <button
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  class="text-xs text-blue-400 font-semibold user-select-none">
                   + Flight Details
-                </p>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- flight detail modal window -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog max-w-[60%]" role="document">
+              <div class="modal-content">
+                <div class="modal-header flex flex-row justify-between">
+                  <h5
+                    class="modal-title font-medium text-lg"
+                    id="exampleModalLabel">
+                    Flight Details
+                  </h5>
+                  <button
+                    type="button"
+                    class="font-semibold"
+                    data-bs-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true" class="text-2xl">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="tabControl">
+                      <div class="container">
+                        <ul
+                          class="nav nav-pills nav-fill"
+                          id="pills-tab"
+                          role="tablist">
+                          <li class="nav-item">
+                            <a
+                              class="nav-link active bg-transparent uppercase"
+                              style="color: orange"
+                              id="pills-home-tab"
+                              data-bs-toggle="pill"
+                              href="#pills-1"
+                              role="tab"
+                              >ITINERARY</a
+                            >
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              class="nav-link"
+                              id="pills-profile-tab"
+                              data-bs-toggle="pill"
+                              href="#pills-2"
+                              role="tab"
+                              >FARE DETAILS</a
+                            >
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              class="nav-link"
+                              id="pills-contact-tab"
+                              data-bs-toggle="pill"
+                              href="#pills-3"
+                              role="tab"
+                              >FARE RULES</a
+                            >
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              class="nav-link"
+                              id="pills-contact-tab"
+                              data-bs-toggle="pill"
+                              href="#pills-4"
+                              role="tab"
+                              >BAGGAGE/AMENITIES</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="tab-content" id="pills-tabContent">
+                        <div
+                          class="tab-pane fade show active"
+                          id="pills-1"
+                          role="tabpanel"
+                          aria-labelledby="pills-home-tab">
+                          <div class="flex flex-row justify-between">
+                            <div class="flex flex-col gap-2">
+                              <img
+                                src="AI.jpg"
+                                alt=""
+                                width="30px"
+                                height="30px" />
+                              <p class="text-sm font-medium">Vistara</p>
+                              <p class="text-sm font-medium">
+                                Premium Economy | UK 619
+                              </p>
+                            </div>
+                            <div
+                              class="flight-details-box flight-details-right flex gap-2 flex-col">
+                              <h5 class="text-sm font-medium">12:10 BOM</h5>
+                              <p class="text-sm font-medium">
+                                Wednesday, 10 Apr'24
+                              </p>
+                              <p class="text-sm font-medium">
+                                Mumbai - Chhatrapati Shivaji Maharaj
+                              </p>
+                              <p class="text-sm font-medium">Airport</p>
+                              <p class="text-sm font-medium">TERMINAL 2</p>
+                            </div>
+                            <div
+                              class="flight-details-box flight-details-plane justify-center items-center gap-2 flex flex-col">
+                              <i class="fa-solid fa-plane"></i>
+                              <p class="text-sm font-medium">02h:10m</p>
+                              <i class="fa fa-arrow-right"></i>
+                            </div>
+                            <div
+                              class="flight-details-box flight-details-left flex flex-col gap-2">
+                              <h5 class="text-sm font-medium">14:20 DED</h5>
+                              <p class="text-sm font-medium">
+                                Wednesday, 10 Apr'24
+                              </p>
+                              <p class="text-sm font-medium">
+                                Dehra Dun - Dehra Dun Airport
+                              </p>
+                              <p class="text-sm font-medium">
+                                TERMINAL 'YET TO BE DECIDED'
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="tab-pane fade"
+                          id="pills-2"
+                          role="tabpanel"
+                          aria-labelledby="pills-profile-tab">
+                          <div
+                            class="flight-price-details-container flex flex-column gap-3">
+                            <div
+                              class="flight-price-details-box w-[90%] mx-auto">
+                              <p class="font-bold text-sm">Basefare Total</p>
+                              <p class="font-bold text-sm">
+                                <span>₹</span> 18,665
+                              </p>
+                            </div>
+                            <div class="line"></div>
+                            <div
+                              class="flight-price-details-box w-[90%] mx-auto">
+                              <p class="font-bold text-sm">Taxes & Fees</p>
+                              <p class="font-bold text-sm">
+                                <span>₹</span> 3,610
+                              </p>
+                            </div>
+                            <div class="line"></div>
+                            <div
+                              class="flight-price-details-box w-[90%] mx-auto">
+                              <p class="font-bold text-sm">Total Fare</p>
+                              <p class="font-bold text-sm">
+                                <span>₹</span> 22,275
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="tab-pane fade"
+                          id="pills-3"
+                          role="tabpanel"
+                          aria-labelledby="pills-contact-tab">
+                          <div
+                            class="fare-rule-container gap-2 flex flex-column">
+                            <div
+                              class="w-[90%] mx-auto flex gap-4 fare-rule-small-box fare-rule-box">
+                              <p class="font-semibold text-sm">BOM</p>
+                              <i class="fas fa-plane" arial-hiddden="true"></i>
+                              <p class="font-semibold text-sm">DED</p>
+                            </div>
+                            <div class="line"></div>
+                            <div
+                              class="fare-rule-small-box w-[90%] mx-auto flex flex-col gap-2">
+                              <p class="font-semibold text-sm">BOM-DED</p>
+                              <p class="font-semibold text-sm">PL1PPF</p>
+                              <p class="font-semibold text-sm">
+                                AP.ADVANCE RES/TKT
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="tab-pane fade"
+                          id="pills-4"
+                          role="tabpanel"
+                          aria-labelledby="pills-contact-tab">
+                          <div class="baggage-details-container">
+                            <div
+                              class="items-center baggage-details-box baggage-details-small-box">
+                              <p class="font-semibold text-base">Mumbai</p>
+                              <i class="fa fa-plane" aria-hidden="true"></i>
+                              <p class="font-semibold text-base">Delhi</p>
+                            </div>
+                            <div class="line"></div>
+                            <div
+                              class="baggage-details-box baggage-details-col-box">
+                              <p class="font-semibold text-base">
+                                Check-in:20 Kg
+                              </p>
+                              <p class="font-semibold text-base">
+                                Cabin: 7kg/person
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="text-white px-5 py-2 text-sm bg-[#f29e3e] font-semibold rounded-md"
+                    data-bs-dismiss="modal">
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -723,6 +948,16 @@
     <script
       src="https://kit.fontawesome.com/f50fdb34c0.js"
       crossorigin="anonymous"></script>
+    <!-- bootstrao -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"></script> -->
     <!-- Own JS File -->
     <script src="script.js"></script>
   </body>
