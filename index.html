@@ -41,6 +41,51 @@
       .hidden {
         display: none;
       }
+
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+
+      .travel-date-select {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .travel-date-select::placeholder {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      .travel-date-select::-ms-input-placeholder {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      .travel-date-select::-moz-placeholder {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      .travel-date-select:-moz-placeholder {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      /* Basic styling for the example */
+      #overflow-search-btn-container {
+        display: flex;
+        list-style-type: none;
+      }
+      .overflow-search-btn-item {
+        margin: 10px;
+        cursor: pointer;
+      }
+      .content {
+        display: none;
+      }
+      .content.active {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -64,43 +109,39 @@
           </div>
           <!-- search container -->
           <div id="search-container">
+            <!-- top floating search btn -->
             <div id="overflow-search-btn">
               <ul id="overflow-search-btn-container">
-                <li class="overflow-search-btn-item">
+                <li
+                  class="overflow-search-btn-item active"
+                  data-target="flight">
                   <i class="fa-solid fa-plane"></i>
                   <span>Flights</span>
                 </li>
-                <li class="overflow-search-btn-item">
+                <li class="overflow-search-btn-item" data-target="hotel">
                   <i class="fa-solid fa-hotel"></i>
                   <span>Hotel</span>
                 </li>
-                <li class="overflow-search-btn-item">
+                <li class="overflow-search-btn-item" data-target="visa">
                   <i class="fa-brands fa-cc-visa"></i>
                   <span>Visa</span>
                 </li>
-                <li class="overflow-search-btn-item">
+                <li class="overflow-search-btn-item" data-target="holidays">
                   <i class="fa-solid fa-snowman"></i>
                   <span>Holidays</span>
                 </li>
-                <li class="overflow-search-btn-item">
+                <li class="overflow-search-btn-item" data-target="bus">
                   <i class="fa-solid fa-bus"></i>
                   <span>Bus</span>
                 </li>
-                <li class="overflow-search-btn-item">
+                <li class="overflow-search-btn-item" data-target="cruise">
                   <i class="fa-solid fa-sailboat"></i>
                   <span>Cruise</span>
                 </li>
-                <li class="overflow-search-btn-item">
-                  <i class="fa-solid fa-moon"></i>
-                  <span>Umrah</span>
-                </li>
-                <li class="overflow-search-btn-item">
-                  <i class="fa-solid fa-ellipsis"></i>
-                  <span>More</span>
-                </li>
               </ul>
             </div>
-            <div id="search-box-container">
+            <!-- flight search container start from here -->
+            <div id="flight" class="search-box-container content active">
               <div id="upper-search-container">
                 <div id="ways-to-go-container">
                   <ul>
@@ -191,37 +232,29 @@
                                 <p class="from-to-text-style">Depart</p>
                                 <input
                                   class="travel-date-select"
-                                  type="text"
+                                  type="date"
                                   id="dateInput"
                                   placeholder="Select a date" />
-                                <div class="calendar" id="calendar">
-                                  <div class="header">
-                                    <button id="prevBtn">&lt;</button>
-                                    <h2 id="monthYear">Month Year</h2>
-                                    <button id="nextBtn">&gt;</button>
-                                  </div>
-                                  <div class="days" id="daysContainer"></div>
-                                </div>
                                 <span>Thursday</span>
                               </div>
                               <div
-                                class="Journey_date"
-                                id="calendarInput changeSelection">
+                                class="Journey_date select-none"
+                                id="changeSelection">
                                 <p class="from-to-text-style">Return date</p>
                                 <input
-                                  class="travel-date-select"
+                                  style="position: relative"
+                                  class="travel-date-select text-sm"
                                   type="text"
-                                  id="dateInput"
                                   disabled
                                   value="Book a round trip" />
-                                <div class="calendar" id="calendar">
-                                  <div class="header">
-                                    <button id="prevBtn">&lt;</button>
-                                    <h2 id="monthYear">Month Year</h2>
-                                    <button id="nextBtn">&gt;</button>
-                                  </div>
-                                  <div class="days" id="daysContainer"></div>
-                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    top: 0%;
+                                    bottom: 0%;
+                                    left: 41%;
+                                    right: 19%;
+                                  "></div>
                               </div>
                             </div>
                           </div>
@@ -241,104 +274,190 @@
                                 >
                               </button>
                               <div
-                                class="bg-white w-[150%] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
+                                class="bg-white w-[535px] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
                                 style="display: none">
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Adults</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg">
-                                    1
+                                <div class="traveller-calulate-persons">
+                                  <div class="passengers">
+                                    <h6>Passengers</h6>
+                                    <div class="passengers-types">
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              ADULTS (12y +)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li>
+                                              <span>7</span>
+                                            </li>
+                                            <li>
+                                              <span>8</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >9</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              CHILDREN (2y - 12y )
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              INFANTS (below 2y)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
+                                  <div class="cabin-selection">
+                                    <h6>Cabin Class</h6>
+                                    <div class="cabin-list">
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="muiButton-label"
+                                          >Economy
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn active">
+                                        <span class="muiButton-label">
+                                          Business
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="MuiButton-label"
+                                          >First Class
+                                        </span>
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Childs</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg ml-[3px]">
-                                    0
-                                  </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
-                                  </div>
-                                </div>
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Infants</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg mr-[1px]">
-                                    0
-                                  </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
-                                  </div>
-                                </div>
-                                <div class="flex flex-column gap-2">
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="economy" />
-                                    <label class="text-sm" for="economy"
-                                      >Economy</label
-                                    >
-                                  </div>
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="premiumEco" />
-                                    <label class="text-sm" for="premiumEco"
-                                      >Premium Economy</label
-                                    >
-                                  </div>
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="business" />
-                                    <label for="business" class="text-sm"
-                                      >Business</label
-                                    >
-                                  </div>
-                                </div>
-                                <button
-                                  class="text-white px-3 py-2 bg-[#d32f2f] font-semibold border-1 border-solid border-[#bf3535] rounded-md">
-                                  Apply Now
-                                </button>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="top_form_search_button">
-                          <!-- bg-[#d32f2f] border-1 border-solid border-[#bf3535] -->
                           <button
                             class="text-white px-3 py-3 bg-[#f29e3e] font-semibold rounded-md">
                             Search Flights
@@ -417,14 +536,6 @@
                                   type="date"
                                   id="dateInput"
                                   placeholder="Select a date" />
-                                <!-- <div class="calendar" id="calendar">
-                                  <div class="header">
-                                    <button id="prevBtn">&lt;</button>
-                                    <h2 id="monthYear">Month Year</h2>
-                                    <button id="nextBtn">&gt;</button>
-                                  </div>
-                                  <div class="days" id="daysContainer"></div>
-                                </div> -->
                                 <span>Thursday</span>
                               </div>
                               <div class="Journey_date" id="calendarInput">
@@ -434,14 +545,6 @@
                                   type="date"
                                   id="dateInput"
                                   placeholder="Select a date" />
-                                <!-- <div class="calendar" id="calendar">
-                                  <div class="header">
-                                    <button id="prevBtn">&lt;</button>
-                                    <h2 id="monthYear">Month Year</h2>
-                                    <button id="nextBtn">&gt;</button>
-                                  </div>
-                                  <div class="days" id="daysContainer"></div>
-                                </div> -->
                                 <span>Thursday</span>
                               </div>
                             </div>
@@ -462,104 +565,190 @@
                                 >
                               </button>
                               <div
-                                class="bg-white w-[150%] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
+                                class="bg-white w-[535px] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
                                 style="display: none">
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Adults</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg">
-                                    1
+                                <div class="traveller-calulate-persons">
+                                  <div class="passengers">
+                                    <h6>Passengers</h6>
+                                    <div class="passengers-types">
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              ADULTS (12y +)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li>
+                                              <span>7</span>
+                                            </li>
+                                            <li>
+                                              <span>8</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >9</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              CHILDREN (2y - 12y )
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              INFANTS (below 2y)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
+                                  <div class="cabin-selection">
+                                    <h6>Cabin Class</h6>
+                                    <div class="cabin-list">
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="muiButton-label"
+                                          >Economy
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn active">
+                                        <span class="muiButton-label">
+                                          Business
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="MuiButton-label"
+                                          >First Class
+                                        </span>
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Childs</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg ml-[3px]">
-                                    0
-                                  </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
-                                  </div>
-                                </div>
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Infants</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg mr-[1px]">
-                                    0
-                                  </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
-                                  </div>
-                                </div>
-                                <div class="flex flex-column gap-2">
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="economy" />
-                                    <label class="text-sm" for="economy"
-                                      >Economy</label
-                                    >
-                                  </div>
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="premiumEco" />
-                                    <label class="text-sm" for="premiumEco"
-                                      >Premium Economy</label
-                                    >
-                                  </div>
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="business" />
-                                    <label for="business" class="text-sm"
-                                      >Business</label
-                                    >
-                                  </div>
-                                </div>
-                                <button
-                                  class="text-white px-3 py-2 bg-[#d32f2f] font-semibold border-1 border-solid border-[#bf3535] rounded-md">
-                                  Apply Now
-                                </button>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="top_form_search_button">
-                          <!-- bg-[#d32f2f] border-1 border-solid border-[#bf3535] -->
                           <button
                             class="text-white px-3 py-3 bg-[#f29e3e] font-semibold rounded-md">
                             Search Flights
@@ -646,8 +835,8 @@
                                   class="travel-date-select"
                                   type="date"
                                   id="dateInput"
-                                  disabled
-                                  value="Book a round trip" />
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
                               </div>
                             </div>
                           </div>
@@ -667,104 +856,190 @@
                                 >
                               </button>
                               <div
-                                class="bg-white w-[150%] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
+                                class="bg-white w-[535px] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
                                 style="display: none">
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Adults</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg">
-                                    1
+                                <div class="traveller-calulate-persons">
+                                  <div class="passengers">
+                                    <h6>Passengers</h6>
+                                    <div class="passengers-types">
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              ADULTS (12y +)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li>
+                                              <span>7</span>
+                                            </li>
+                                            <li>
+                                              <span>8</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >9</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              CHILDREN (2y - 12y )
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              INFANTS (below 2y)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
+                                  <div class="cabin-selection">
+                                    <h6>Cabin Class</h6>
+                                    <div class="cabin-list">
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="muiButton-label"
+                                          >Economy
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn active">
+                                        <span class="muiButton-label">
+                                          Business
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="MuiButton-label"
+                                          >First Class
+                                        </span>
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Childs</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg ml-[3px]">
-                                    0
-                                  </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
-                                  </div>
-                                </div>
-                                <div
-                                  class="flex gap-2 py-2 px-3 border-b-2 border-solid border-gray-200 justify-between items-center">
-                                  <p class="font-medium text-md">Infants</p>
-                                  <div
-                                    id="adultCount"
-                                    class="font-semibold text-lg mr-[1px]">
-                                    0
-                                  </div>
-                                  <div class="">
-                                    <button
-                                      class="minus border-2 border-solid border-gray-300 py-0 px-2 rounded-md">
-                                      &minus;
-                                    </button>
-                                    <button
-                                      class="add border-2 border-solid border-gray-300 add py-0 px-2 rounded-md">
-                                      &plus;
-                                    </button>
-                                  </div>
-                                </div>
-                                <div class="flex flex-column gap-2">
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="economy" />
-                                    <label class="text-sm" for="economy"
-                                      >Economy</label
-                                    >
-                                  </div>
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="premiumEco" />
-                                    <label class="text-sm" for="premiumEco"
-                                      >Premium Economy</label
-                                    >
-                                  </div>
-                                  <div class="flex flex-row gap-3">
-                                    <input
-                                      type="radio"
-                                      name="flightClass"
-                                      id="business" />
-                                    <label for="business" class="text-sm"
-                                      >Business</label
-                                    >
-                                  </div>
-                                </div>
-                                <button
-                                  class="text-white px-3 py-2 bg-[#d32f2f] font-semibold border-1 border-solid border-[#bf3535] rounded-md">
-                                  Apply Now
-                                </button>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="top_form_search_button">
-                          <!-- bg-[#d32f2f] border-1 border-solid border-[#bf3535] -->
                           <button
                             class="text-white px-3 py-3 bg-[#f29e3e] font-semibold rounded-md">
                             Search Flights
@@ -821,6 +1096,1492 @@
                 </div>
               </div>
             </div>
+            <!-- flight search container ends here -->
+
+            <!-- hotel container start from here -->
+            <div id="hotel" class="search-box-container content">
+              <div id="upper-search-container" style="justify-content: center">
+                <p class="text-2xl text-center tracking-wider">
+                  Book Domestic and International Hotels
+                </p>
+              </div>
+              <div id="middle-search-container">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="way_search_form" data-value="oneway">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                          <div class="flight_Search_boxed">
+                            <p class="from-to-text-style text-sm">
+                              ENTER YOUR DESTINATION OR PROPERTY
+                            </p>
+                            <div class="input-container">
+                              <input
+                                id="input1"
+                                placeholder="Select Destination"
+                                class="input-box-text" />
+                              <ul class="dropdown" id="dropdown1">
+                                <li class="border-y-2 mt-1 text-sm">
+                                  New York
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Los Angeles
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">Chicago</li>
+                                <li class="border-y-2 mt-1 text-sm">Houston</li>
+                                <li class="border-y-2 mt-1 text-sm">Phoenix</li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Philadelphia
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="form_search_date">
+                            <div class="flight_Search_boxed date_flex_area">
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check In
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check Out
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="col-lg-2 col-md-6 col-sm-12 col-12 details-fill">
+                          <div
+                            class="flight_Search_boxed dropdown_passenger_area">
+                            <p class="from-to-text-style">TRAVELLERS</p>
+                            <div class="dropdownex relative">
+                              <button
+                                class="input-box border-none bg-transparent"
+                                type="button">
+                                <b class="font-semibold text-2xl">1</b>
+                                <span class="text-xl d-inline font-medium"
+                                  >Travellers</span
+                                >
+                              </button>
+                              <div
+                                class="bg-white w-[535px] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
+                                style="display: none">
+                                <div class="traveller-calulate-persons">
+                                  <div class="passengers">
+                                    <h6>Passengers</h6>
+                                    <div class="passengers-types">
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              ADULTS (12y +)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li>
+                                              <span>7</span>
+                                            </li>
+                                            <li>
+                                              <span>8</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >9</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              CHILDREN (2y - 12y )
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              INFANTS (below 2y)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="cabin-selection">
+                                    <h6>Cabin Class</h6>
+                                    <div class="cabin-list">
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="muiButton-label"
+                                          >Economy
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn active">
+                                        <span class="muiButton-label">
+                                          Business
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="MuiButton-label"
+                                          >First Class
+                                        </span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="top_form_search_button">
+                          <button
+                            class="text-white px-3 py-3 bg-[#f29e3e] font-semibold rounded-md">
+                            Search Flights
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="h-[2px] bg-[#ebebeb] w-100 my-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- hotel container ends here -->
+
+            <!-- visa container start from here -->
+            <div id="visa" class="search-box-container content">
+              <div id="upper-search-container" style="justify-content: center">
+                <p class="text-2xl font-medium text-center tracking-wider">
+                  Visa Application
+                </p>
+              </div>
+              <div id="middle-search-container">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="way_search_form" data-value="oneway">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="flight_Search_boxed">
+                            <p class="from-to-text-style text-xs">
+                              Select Country
+                            </p>
+                            <div class="input-container">
+                              <input
+                                id="input1"
+                                placeholder="Select Destination"
+                                class="input-box-text" />
+                              <ul class="dropdown" id="dropdown1">
+                                <li class="border-y-2 mt-1 text-sm">
+                                  New York
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Los Angeles
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">Chicago</li>
+                                <li class="border-y-2 mt-1 text-sm">Houston</li>
+                                <li class="border-y-2 mt-1 text-sm">Phoenix</li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Philadelphia
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="flight_Search_boxed">
+                            <p class="from-to-text-style text-xs">
+                              Your Nationality
+                            </p>
+                            <div class="input-container">
+                              <input
+                                id="input1"
+                                placeholder="Select Destination"
+                                class="input-box-text" />
+                              <ul class="dropdown" id="dropdown1">
+                                <li class="border-y-2 mt-1 text-sm">
+                                  New York
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Los Angeles
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">Chicago</li>
+                                <li class="border-y-2 mt-1 text-sm">Houston</li>
+                                <li class="border-y-2 mt-1 text-sm">Phoenix</li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Philadelphia
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="form_search_date">
+                            <div class="flight_Search_boxed date_flex_area">
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check In
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check Out
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="col-lg-2 col-md-6 col-sm-12 col-12"
+                          style="max-width: 10% !important">
+                          <div
+                            class="flight_Search_boxed dropdown_passenger_area">
+                            <p class="from-to-text-style">TRAVELLERS</p>
+                            <div class="dropdownex relative">
+                              <button
+                                class="input-box border-none bg-transparent"
+                                type="button">
+                                <b class="font-semibold text-2xl">1</b>
+                                <span class="text-xl d-inline font-medium"
+                                  >Travellers</span
+                                >
+                              </button>
+                              <div
+                                class="bg-white w-[535px] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
+                                style="display: none">
+                                <div class="traveller-calulate-persons">
+                                  <div class="passengers">
+                                    <h6>Passengers</h6>
+                                    <div class="passengers-types">
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              ADULTS (12y +)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li>
+                                              <span>7</span>
+                                            </li>
+                                            <li>
+                                              <span>8</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >9</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              CHILDREN (2y - 12y )
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              INFANTS (below 2y)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="cabin-selection">
+                                    <h6>Cabin Class</h6>
+                                    <div class="cabin-list">
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="muiButton-label"
+                                          >Economy
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn active">
+                                        <span class="muiButton-label">
+                                          Business
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="MuiButton-label"
+                                          >First Class
+                                        </span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="top_form_search_button">
+                          <button
+                            class="text-white px-3 py-3 bg-[#f29e3e] font-semibold rounded-md">
+                            Search Flights
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="h-[2px] bg-[#ebebeb] w-100 my-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- visa container ends here -->
+
+            <!-- holidays container start from here -->
+            <div id="holidays" class="search-box-container content">
+              <div id="upper-search-container" style="justify-content: center">
+                <p class="text-2xl font-medium text-center tracking-wider">
+                  Holidays
+                </p>
+              </div>
+              <div id="middle-search-container">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="way_search_form" data-value="oneway">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                          <div class="flight_Search_boxed">
+                            <p class="from-to-text-style text-xs">
+                              Destination
+                            </p>
+                            <div class="input-container">
+                              <input
+                                id="input1"
+                                placeholder="Select Destination"
+                                class="input-box-text" />
+                              <ul class="dropdown" id="dropdown1">
+                                <li class="border-y-2 mt-1 text-sm">
+                                  New York
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Los Angeles
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">Chicago</li>
+                                <li class="border-y-2 mt-1 text-sm">Houston</li>
+                                <li class="border-y-2 mt-1 text-sm">Phoenix</li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Philadelphia
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="form_search_date">
+                            <div class="flight_Search_boxed date_flex_area">
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check In
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check Out
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="col-lg-2 col-md-6 col-sm-12 col-12"
+                          style="max-width: 10% !important">
+                          <div
+                            class="flight_Search_boxed dropdown_passenger_area">
+                            <p class="from-to-text-style">TRAVELLERS</p>
+                            <div class="dropdownex relative">
+                              <button
+                                class="input-box border-none bg-transparent"
+                                type="button">
+                                <b class="font-semibold text-2xl">1</b>
+                                <span class="text-xl d-inline font-medium"
+                                  >Travellers</span
+                                >
+                              </button>
+                              <div
+                                class="bg-white w-[535px] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
+                                style="display: none">
+                                <div class="traveller-calulate-persons">
+                                  <div class="passengers">
+                                    <h6>Passengers</h6>
+                                    <div class="passengers-types">
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              ADULTS (12y +)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li>
+                                              <span>7</span>
+                                            </li>
+                                            <li>
+                                              <span>8</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >9</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              CHILDREN (2y - 12y )
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              INFANTS (below 2y)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="cabin-selection">
+                                    <h6>Cabin Class</h6>
+                                    <div class="cabin-list">
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="muiButton-label"
+                                          >Economy
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn active">
+                                        <span class="muiButton-label">
+                                          Business
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="MuiButton-label"
+                                          >First Class
+                                        </span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="top_form_search_button">
+                          <button
+                            class="text-white px-3 py-3 bg-[#f29e3e] font-semibold rounded-md">
+                            Search Flights
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="h-[2px] bg-[#ebebeb] w-100 my-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- holidays container ends here -->
+
+            <!-- bus container start from here -->
+            <div id="bus" class="search-box-container content">
+              <div id="upper-search-container" style="justify-content: center">
+                <p class="text-2xl font-medium text-center tracking-wider">
+                  Bus Tour
+                </p>
+              </div>
+              <div id="middle-search-container">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="way_search_form" data-value="oneway">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="flight_Search_boxed">
+                            <p class="from-to-text-style text-xs">
+                              Select Country
+                            </p>
+                            <div class="input-container">
+                              <input
+                                id="input1"
+                                placeholder="Select Destination"
+                                class="input-box-text" />
+                              <ul class="dropdown" id="dropdown1">
+                                <li class="border-y-2 mt-1 text-sm">
+                                  New York
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Los Angeles
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">Chicago</li>
+                                <li class="border-y-2 mt-1 text-sm">Houston</li>
+                                <li class="border-y-2 mt-1 text-sm">Phoenix</li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Philadelphia
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="flight_Search_boxed">
+                            <p class="from-to-text-style text-xs">
+                              Your Nationality
+                            </p>
+                            <div class="input-container">
+                              <input
+                                id="input1"
+                                placeholder="Select Destination"
+                                class="input-box-text" />
+                              <ul class="dropdown" id="dropdown1">
+                                <li class="border-y-2 mt-1 text-sm">
+                                  New York
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Los Angeles
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">Chicago</li>
+                                <li class="border-y-2 mt-1 text-sm">Houston</li>
+                                <li class="border-y-2 mt-1 text-sm">Phoenix</li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Philadelphia
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="form_search_date">
+                            <div class="flight_Search_boxed date_flex_area">
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check In
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check Out
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="col-lg-2 col-md-6 col-sm-12 col-12"
+                          style="max-width: 10% !important">
+                          <div
+                            class="flight_Search_boxed dropdown_passenger_area">
+                            <p class="from-to-text-style">TRAVELLERS</p>
+                            <div class="dropdownex relative">
+                              <button
+                                class="input-box border-none bg-transparent"
+                                type="button">
+                                <b class="font-semibold text-2xl">1</b>
+                                <span class="text-xl d-inline font-medium"
+                                  >Travellers</span
+                                >
+                              </button>
+                              <div
+                                class="bg-white w-[535px] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
+                                style="display: none">
+                                <div class="traveller-calulate-persons">
+                                  <div class="passengers">
+                                    <h6>Passengers</h6>
+                                    <div class="passengers-types">
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              ADULTS (12y +)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li>
+                                              <span>7</span>
+                                            </li>
+                                            <li>
+                                              <span>8</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >9</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              CHILDREN (2y - 12y )
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              INFANTS (below 2y)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="cabin-selection">
+                                    <h6>Cabin Class</h6>
+                                    <div class="cabin-list">
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="muiButton-label"
+                                          >Economy
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn active">
+                                        <span class="muiButton-label">
+                                          Business
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="MuiButton-label"
+                                          >First Class
+                                        </span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="top_form_search_button">
+                          <button
+                            class="text-white px-3 py-3 bg-[#f29e3e] font-semibold rounded-md">
+                            Search Flights
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="h-[2px] bg-[#ebebeb] w-100 my-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- bus container ends here -->
+
+            <!-- Cruise container start from here -->
+            <div id="cruise" class="search-box-container content">
+              <div id="upper-search-container" style="justify-content: center">
+                <p class="text-2xl font-medium text-center tracking-wider">
+                  Cruise Application
+                </p>
+              </div>
+              <div id="middle-search-container">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="way_search_form" data-value="oneway">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="flight_Search_boxed">
+                            <p class="from-to-text-style text-xs">
+                              Select Country
+                            </p>
+                            <div class="input-container">
+                              <input
+                                id="input1"
+                                placeholder="Select Destination"
+                                class="input-box-text" />
+                              <ul class="dropdown" id="dropdown1">
+                                <li class="border-y-2 mt-1 text-sm">
+                                  New York
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Los Angeles
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">Chicago</li>
+                                <li class="border-y-2 mt-1 text-sm">Houston</li>
+                                <li class="border-y-2 mt-1 text-sm">Phoenix</li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Philadelphia
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="flight_Search_boxed">
+                            <p class="from-to-text-style text-xs">
+                              Your Nationality
+                            </p>
+                            <div class="input-container">
+                              <input
+                                id="input1"
+                                placeholder="Select Destination"
+                                class="input-box-text" />
+                              <ul class="dropdown" id="dropdown1">
+                                <li class="border-y-2 mt-1 text-sm">
+                                  New York
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Los Angeles
+                                </li>
+                                <li class="border-y-2 mt-1 text-sm">Chicago</li>
+                                <li class="border-y-2 mt-1 text-sm">Houston</li>
+                                <li class="border-y-2 mt-1 text-sm">Phoenix</li>
+                                <li class="border-y-2 mt-1 text-sm">
+                                  Philadelphia
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                          <div class="form_search_date">
+                            <div class="flight_Search_boxed date_flex_area">
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check In
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                              <div class="Journey_date">
+                                <p class="from-to-text-style uppercase">
+                                  Check Out
+                                </p>
+                                <input
+                                  class="travel-date-select"
+                                  type="date"
+                                  id="dateInput"
+                                  placeholder="Select a date" />
+                                <span>Thursday</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="col-lg-2 col-md-6 col-sm-12 col-12"
+                          style="max-width: 10% !important">
+                          <div
+                            class="flight_Search_boxed dropdown_passenger_area">
+                            <p class="from-to-text-style">TRAVELLERS</p>
+                            <div class="dropdownex relative">
+                              <button
+                                class="input-box border-none bg-transparent"
+                                type="button">
+                                <b class="font-semibold text-2xl">1</b>
+                                <span class="text-xl d-inline font-medium"
+                                  >Travellers</span
+                                >
+                              </button>
+                              <div
+                                class="bg-white w-[535px] flex-col gap-4 py-2 px-3 shadow-md border-2 border-solid border-gray-100 position-absolute options"
+                                style="display: none">
+                                <div class="traveller-calulate-persons">
+                                  <div class="passengers">
+                                    <h6>Passengers</h6>
+                                    <div class="passengers-types">
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              ADULTS (12y +)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li>
+                                              <span>7</span>
+                                            </li>
+                                            <li>
+                                              <span>8</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >9</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              CHILDREN (2y - 12y )
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="passengers-type">
+                                        <div class="text">
+                                          <div class="type-label">
+                                            <p
+                                              style="
+                                                font-size: 0.6rem;
+                                                color: rgb(98 92 92);
+                                                font-weight: bold;
+                                              ">
+                                              INFANTS (below 2y)
+                                            </p>
+                                            <span
+                                              style="
+                                                color: gray;
+                                                padding-top: 0px;
+                                              "
+                                              >on the day of travel</span
+                                            >
+                                          </div>
+                                        </div>
+                                        <div class="number-button-container">
+                                          <ul style="display: flex">
+                                            <li>
+                                              <span>1</span>
+                                            </li>
+                                            <li>
+                                              <span>2</span>
+                                            </li>
+                                            <li>
+                                              <span>3</span>
+                                            </li>
+                                            <li>
+                                              <span>4</span>
+                                            </li>
+                                            <li>
+                                              <span>5</span>
+                                            </li>
+                                            <li>
+                                              <span>6</span>
+                                            </li>
+                                            <li class="btn-selected">
+                                              <span> >6</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="cabin-selection">
+                                    <h6>Cabin Class</h6>
+                                    <div class="cabin-list">
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="muiButton-label"
+                                          >Economy
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn active">
+                                        <span class="muiButton-label">
+                                          Business
+                                        </span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        class="label-select-btn">
+                                        <span class="MuiButton-label"
+                                          >First Class
+                                        </span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="top_form_search_button">
+                          <button
+                            class="text-white px-3 py-3 bg-[#f29e3e] font-semibold rounded-md">
+                            Search Flights
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="h-[2px] bg-[#ebebeb] w-100 my-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Cruise container ends here -->
           </div>
         </div>
       </nav>
@@ -2663,16 +4424,22 @@
   </body>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const inputBox = document.querySelector(".input-box");
-      const options = document.querySelector(".options");
-      inputBox.addEventListener("click", function () {
-        options.style.display =
-          options.style.display === "flex" ? "none" : "flex";
-      });
+      const inputBox = document.querySelectorAll(".input-box");
+      const options = document.querySelectorAll(".options");
+      console.log(options);
+      console.log(inputBox);
+      for (let i = 0; i < inputBox.length; i++) {
+        inputBox[i].addEventListener("click", function () {
+          // console.log(options.style.display);
+          // console.log("clicked");
+          options[i].style.display =
+            options[i].style.display === "block" ? "none" : "block";
+        });
+      }
     });
 
+    // ways to go (trip radio button logic)
     document.addEventListener("DOMContentLoaded", function () {
-      // Function to handle the change of radio buttons
       function handleRadioChange(event) {
         const value = event.target.id;
         const divs = document.querySelectorAll("div[data-value]");
@@ -2686,18 +4453,59 @@
         });
       }
 
-      // Get all radio buttons
       const radios = document.querySelectorAll('input[name="ways"]');
 
-      // Add event listeners to each radio button
       radios.forEach((radio) => {
         radio.addEventListener("change", handleRadioChange);
       });
 
-      // Trigger the change event on the initially checked radio button to set the correct state on page load
       document
         .querySelector('input[name="ways"]:checked')
         .dispatchEvent(new Event("change"));
+    });
+
+    // open calender when clicking on mm/dd/yyyy
+    document
+      .querySelectorAll(".travel-date-select")
+      .forEach(function (dateInput) {
+        dateInput.addEventListener("click", function () {
+          this.showPicker();
+        });
+      });
+
+    // ============== improvement here ===================
+
+    // Function to select the round trip radio button when clicking on one way return container clicked
+    function selectRoundTrip() {
+      document.getElementById("roundtrip").checked = true;
+      // console.log("clicked");
+    }
+
+    let changeToRoundTrip = document.getElementById("changeSelection");
+    // console.log(changeToRoundTrip);
+
+    changeToRoundTrip.addEventListener("click", () => {
+      selectRoundTrip();
+    });
+
+    // overflow search btn container
+    document.querySelectorAll(".overflow-search-btn-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        document
+          .querySelectorAll(".overflow-search-btn-item")
+          .forEach((btn) => {
+            btn.classList.remove("active");
+          });
+
+        document.querySelectorAll(".content").forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        item.classList.add("active");
+
+        const targetId = item.getAttribute("data-target");
+        document.getElementById(targetId).classList.add("active");
+      });
     });
   </script>
   <script src="assets/js/jquery-3.6.0.min.js"></script>
